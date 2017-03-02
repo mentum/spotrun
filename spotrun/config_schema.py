@@ -14,14 +14,13 @@ class AWSConfig(Schema):
 
 
 class ConfigSchema(Schema):
-    name = fields.Str()
+    name = fields.Str(required=True)
 
     command = fields.Str(required=True)
-    stdout = fields.Str(default="stdout.log")
-    stderr = fields.Str(default="stderr.log")
+    stdout = fields.Str(required=True)
+    stderr = fields.Str(required=True)
 
-    input_files = fields.Dict(default={})
-    output_files = fields.Dict(default={})
+    input_files = fields.Dict(required=True)
     aws_config = fields.Nested(AWSConfig, required=True)
     private_key_path = fields.Str(required=True)
     instance_spec = fields.Dict(required=True)
